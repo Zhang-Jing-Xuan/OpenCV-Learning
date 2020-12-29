@@ -25,9 +25,12 @@ if __name__=="__main__":
     #在d2基础上，绕图像中心点逆时针旋转30度
     A3=cv.getRotationMatrix2D((w/2.0,h/2.0),30,1)
     d3=cv.warpAffine(image,A3,(w,h),borderValue=125)
+    #rotate函数
+    rimg=cv.rotate(image,cv.ROTATE_90_CLOCKWISE)#顺时针旋转90度
     cv.imshow("image",image)
     cv.imshow("d1",d1)
     cv.imshow("d2",d2)
     cv.imshow("d3",d3)
+    cv.imshow("rimg",rimg)
     cv.waitKey(0)
     cv.destroyAllWindows()
