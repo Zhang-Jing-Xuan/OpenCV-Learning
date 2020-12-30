@@ -17,18 +17,24 @@ if __name__=="__main__":
     pixelSequence=image.reshape([rows*cols,-1])
     numberBins=256
     histplt(pixelSequence,numberBins)
-    
+    #线性变换
     a=2
     Output=float(a)*image
     Output[Output>255]=255
     Output=np.round(Output)
     Output=Output.astype(np.uint8)
     cv.imshow("image",image)
-    cv.imshow("Output",Output)
-    
-
-    Output=Output.reshape([rows*cols,-1])
-    histplt(Output,numberBins)
+    cv.imshow("Output_linear",Output)
+    #正规化
+    Imax=np.max(image)
+    Imin=np.min(image)
+    Omin,Omax=0,255
+    a=(float)(Omax-Omin)/(Imax-Imin)
+    b=Omin-a*Imin
+    Output=a*image+b
+    Output=Output.astype(np.uint8)
+    cv.imshow("image",image)
+    cv.imshow("Output_normalization",Output)
 
     cv.waitKey(0)
     cv.destroyAllWindows()
