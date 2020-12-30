@@ -39,5 +39,5 @@ if __name__=="__main__":
     dst=cv.normalize(image,dst,255,0,cv.NORM_MINMAX,cv.CV_8U)
     cv.imshow("dst",dst)
 
-    cv.waitKey(0)
+    cv.waitKey(0)#按任意键退出
     cv.destroyAllWindows()
