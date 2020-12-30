@@ -33,8 +33,11 @@ if __name__=="__main__":
     b=Omin-a*Imin
     Output=a*image+b
     Output=Output.astype(np.uint8)
-    cv.imshow("image",image)
     cv.imshow("Output_normalization",Output)
+    #normalize函数正规化
+    dst=image
+    dst=cv.normalize(image,dst,255,0,cv.NORM_MINMAX,cv.CV_8U)
+    cv.imshow("dst",dst)
 
     cv.waitKey(0)
     cv.destroyAllWindows()
